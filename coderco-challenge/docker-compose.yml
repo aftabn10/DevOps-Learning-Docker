@@ -5,6 +5,9 @@ services:
       - "5002:5002"
     depends_on:
       - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
 
   redis:
     image: redis:latest
@@ -14,7 +17,3 @@ services:
       - redis-data:/data
 volumes:
   redis-data:
-
-      
-
-  
