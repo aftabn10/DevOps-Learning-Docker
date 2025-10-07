@@ -14,7 +14,7 @@ def welcome():
     <head>
     <style>
             body {
-                background-color: #919682;
+                background-color: #0049B7;
                 font-family: Arial, sans-serif;
                 display: flex;
                 justify-content: center;
@@ -33,7 +33,7 @@ def welcome():
              p {
                 font-size: 14px;
                 margin-bottom: 40px;
-                font-weight:600;
+                font-weight:400;
                 color: #f4f3f1;
             }
             .button-container {
@@ -46,7 +46,7 @@ def welcome():
                 padding: 15px 30px;
                 font-size: 16px;
                 color: white;
-                background-color: #68756D;
+                background-color: #003B94;
                 border: 2px solid #f4f3f1;
                 border-radius: 8px;
                 text-decoration: none;
@@ -57,8 +57,7 @@ def welcome():
                 font-weight:bold;
             }
             a.button:active {
-                background-color: #68756D;
-
+                background-color: #003B94;
             }
         </style>
     </head>
@@ -79,15 +78,106 @@ def welcome():
 def count():
     visits = r.incr('visits')
     return f"""
-    This page has been visited {visits} times
-    <br>
-    <a href="/">Go back to Homepage</a>
+    <html>
+    <head>
+    <style>
+        body {{
+                background-color: #0049B7;
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }}
+            .container {{
+                text-align: center;
+                color: white;
+            }}
+            h1 {{
+                font-weight: bold;
+                margin-bottom: 20px;
+            }}
+             p {{
+                font-size: 14px;
+                margin-bottom: 40px;
+                font-weight:400;
+                color: #f4f3f1;
+            }}
+            .button-container {{
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }}
+            a.button {{
+                display: inline-block;
+                padding: 15px 30px;
+                font-size: 16px;
+                color: white;
+                background-color: #003B94;
+                border: 2px solid #f4f3f1;
+                border-radius: 8px;
+                text-decoration: none;
+                text-transform: capitalize;
+                transition: all 0.2s ease-in-out;
+            }}
+            a.button:hover {{
+                font-weight:bold;
+            }}
+            a.button:active {{
+                background-color: #68756D;
+            }}
+    </style>
+    <div class="container">
+        <h1>This page has been visited {visits} times.</h1>
+            <div class="button-container">
+                <a class="button" href="/count">Reload</a>
+                <a class="button" href="/">Home</a>
+            </div>
+        </div>
+    </body>
+    </head>
+    </html>
     """
 
 @app.route("/about")
 def about():
-    return f"""
-    About Us Page
+    return """
+    <html>
+    <head>
+    <style>
+            body {
+                background-color: #0049B7;
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                text-align: center;
+                color: white;
+            }
+            h1 {
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+             p {
+                font-size: 14px;
+                margin-bottom: 40px;
+                font-weight:400;
+                color: #f4f3f1;
+            }
+            </style>
+    </head>
+    <body>
+    <div class="container">
+    <h1>About Us Page</h1>
+    <p>Brief explanation about us...</p>
+    </div>
+    </body>
+    </html>
     """
     
 if __name__ == "__main__":
